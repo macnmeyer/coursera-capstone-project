@@ -14,13 +14,11 @@
 .subtitle-text {
     font-family: yrsa, serif;
     font-size: 40px;
-    color: #EDEFEE;
     font-weight: 500;
 }
 .description-text {
     font-family: karla, sans-serif;
     font-size: 18px;
-    color: #EDEFEE;
     font-weight: medium;
 }
 .button {
@@ -28,16 +26,18 @@
     color: #333333;
     font-family: karla, sans-serif;
     font-size: 18px;
+    font-weight: 600;
     padding: 10px 20px;
     border: none;
     border-radius: 16px;
     cursor: pointer;
+    width: fit-content;
 }
 .banner{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    width: 100%;
 }
 
 /* Styles for the Header component */
@@ -46,43 +46,315 @@
     justify-content: space-between;
     align-items: center;
     height: 50px;
+    margin: 0;
+    z-index: 10;
+    width: 100%;
+}
+.header > * {
     margin: 10px;
 }
-.header img {
+#header-logo {
     height: 50px;
+}
+.header .icon {
+    display: none;
+}
+.hamburger-menu-expanded {
+    display: flex;
+    flex-direction: column;
+    background-color: #EDEFEE;
+    width: fit-content;
+    z-index: 15;
+    display: none;
+    margin: 0;
+}
+@media (min-width: 1001px) {
+    .header {
+        height: fit-content;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+@media (max-width: 1000px) {
+    .header {
+        height: 40px;
+        padding: 10px 0;
+        margin: 0;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background-color: #EDEFEE;
+        border-bottom: 1px solid;
+        border-color: #495e5750;
+    }
+    .header .nav {
+        display: none;
+    }
+    .header .icon {
+        display: block;
+        height: 100%;
+        padding: 0 1em;
+        cursor: pointer;
+    }
+    .header #hamMenu {
+        height: 80%;
+    }
+    .hamburger-menu-expanded ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    .hamburger-menu-expanded ul li {
+        cursor: pointer;
+        border: 1px solid #333333;
+        margin: 0;
+    }
 }
 
 /* Styles for the Nav component */
+.nav {
+    display: flex;
+    height: 100%;
+    margin: 10px;
+}   
 .nav ul {
     list-style-type: none;
     display: flex;
-    gap: 75px;
+    flex-direction: row;
+    min-width: none;
 }
 .nav ul li {
     cursor: pointer;
+    min-width: none;
+}
+@media (min-width: 1001px) {
+    .nav {
+        flex-direction: row;
+        justify-content: flex-end;
+        height: 50px;
+        width: 100%;
+        padding: 0%;
+    }
+    .nav ul {
+        height: 50px;
+        gap: clamp(5px, 3vw, 3rem);
+        padding: 0;
+        margin: 0;
+    }
+    .nav ul li img {
+        display: none;
+    }
+    .nav ul li {
+        margin: 0;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        padding: 0 1.5rem;
+        border-radius: 16px;
+    }
+    .nav ul li:hover {
+        background-color:#495e57;
+        transition: 0.1s;
+    }
+    .nav ul li:hover h1 {
+        color: #EDEFEE;
+    }
+}
+@media (max-width: 1000px) {
+    .hamburger-menu-expanded {
+        position: fixed;
+        margin: 0;
+        padding: 0;
+        left: 0;
+        z-index: 20;
+        border-right: 1px solid;
+        border-color: #495e5750;
+        min-width: 45vw;
+        width: auto;
+    }
+    .nav {
+        margin: 0;
+        padding: 0;
+    }
+    .nav ul {
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav ul li {
+        border: 1px solid;
+        border-color: #495e5750;
+        border-left: none;
+        border-top: none;
+        border-right: none;
+        margin: 0;
+        padding: 0.5rem 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .nav ul li:hover {
+        background-color:#495e5750;
+        transition: 0.1s;
+    }
+    .nav ul .icon {
+        height: 1.5rem;
+        align-self: center;
+    }
+    .nav .lead-text {
+        font-size: 24px;
+        margin: 0;
+    }
 }
 
 /* Styles for the Main component */
+@media (max-width: 1000px) {
+    .main > section {
+        flex-direction: column;
+        text-align: center;
+    }
+    .title-text {
+        font-size: 40px;
+    }
+    .subtitle-text {
+        font-size: 24px;
+    }
+    .button {
+        font-size: 16px;
+        padding: 0.5rem 1rem;
+    }
+}
 .main {
-    padding: 20px;
+    width: 100%;
+    z-index: 1;
 }
 .hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    background-color: #495e57;
+    color: #EDEFEE;
+    overflow: hidden;
+    position: relative;
+}
+.hero-text {
+    max-width: 600px;
+    height: 300px;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    z-index: 1;
+}
+.hero-text > * {
+    margin: 0;
+}
+.food-image {
+    margin: 0px;
+    height: 300px;
+    width: 600px;
+    background-image: url(../assets/restaurantfood.jpg);
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+@media (max-width: 1000px) {
+    .hero-text {
+        width: 100%;
+        height: auto;
+    }
+    .hero-text .title-text{
+        padding-top: 1rem;
+    }
+    .hero-text .description-text{
+        text-align: left;
+        line-height: 1.5rem;
+        padding: 1rem;
+    }
+    .hero-text .button{
+        margin-bottom: 1rem;
+        justify-self: center;
+    }
+    .food-image {
+        position: absolute;
+        opacity: 0.2;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.highlights button {
+    background-color: #333333;
+    color: #EDEFEE;
+}
+@media (max-width: 1000px) {
+    .highlights {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+
+/* Styles for the food card component */
+.food-card-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.food-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    background-color: #EDEFEE;
+    border-radius: 16px;
+    overflow: hidden;
+    color: #333333;
+}
+.food-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}   
+.food-card-content {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* Styles for the Testimonial card component */
+.testimonial-card-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    background-color: #EDEFEE;
+    border-radius: 16px;
+    overflow: hidden;
+    color: #333333;
+    padding: 20px;
+}
+
+/* Styles for the About component */
+.about {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 300px;
     background-color: #495e57;
+    color: #EDEFEE;
 }
-.food-image {
-    margin-left: 20px;
-    height: 300px;
-    width: 600px;
-}
-.food-image img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
+
 
 /* Styles for the Footer component */
 .footer {
