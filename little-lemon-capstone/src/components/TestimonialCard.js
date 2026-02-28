@@ -1,12 +1,22 @@
 import React from 'react'
+import './component_styles.css'
 
-const TestimonialCard = () => {
+const TestimonialCard = ({image, name, location, text}) => {
   return (
     <article className="testimonial-card">
+        <header className="testimonial-card-banner">
+            <div className="testimonial-image-container">
+                <img src={image} alt={name} />
+            </div>
+            <div className="testimonial-banner-text">
+                <h2>{name}</h2>
+                <p className="description-text">{location}</p>
+            </div>
+        </header>
         <p className="testimonial-text">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "{text}"
         </p>
-        <h4 className="testimonial-author">- John Doe</h4>
+        <h4 className="testimonial-author">- {name}</h4>
     </article>
   )
 }
